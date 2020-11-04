@@ -1,0 +1,18 @@
+{
+  "name": "football-pwa-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "idb": "^5.0.7",
+    "web-push": "^3.4.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.11.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
