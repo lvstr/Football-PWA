@@ -1,4 +1,4 @@
-const CACHE_NAME = "fwa-v1";
+const CACHE_NAME = "fwa-v2";
 const urlsToCache = [
   "/",
   "/manifest.json",
