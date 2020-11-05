@@ -3,7 +3,7 @@ body {
 }
 
 nav {
-  background: rgba(0, 0, 0, 0);
+  background: transparent;
   box-shadow: none !important;
   padding: 0px 20px;
 }
