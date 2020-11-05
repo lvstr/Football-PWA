@@ -2,8 +2,8 @@
   "name": "Football Web Apps",
   "short_name": "FWA",
   "description": "Best Football Web Informations",
-  "theme_color": "#FFFFFF",
-  "background_color": "#FFFFFF",
+  "theme_color": "#00FF00",
+  "background_color": "#00FF00",
   "display": "standalone",
   "start_url": "index.html",
   "icons": [
