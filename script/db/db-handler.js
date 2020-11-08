@@ -22,7 +22,11 @@ const getTeamList = () => {
         <div class="col s12 m6 team-card"> 
         <div class="card">
         <div class="card-image team-img">
+<<<<<<< HEAD
           <img src="${team.crestUrl}" class="responsive-img" width="30"/>
+=======
+          <img src="${team.crestUrl}" class="responsive-img" width="30" alt="Team Logo"/>
+>>>>>>> update all
           <div class="divider"></div>
           <a id="del-favorite-${team.id}" class="btn-floating halfway-fab waves-effect waves-light red"
             ><i class="material-icons">cancel</i></a

@@ -1,4 +1,8 @@
 import { addFavTeam, deleteFavTeam } from "../db/db-handler.js";
+<<<<<<< HEAD
+=======
+import { getTeamById } from "../db/db-listener.js";
+>>>>>>> update all
 
 let loaderAnimation = `
  <div class="row">

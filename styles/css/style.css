@@ -3,7 +3,11 @@ body {
 }
 
 nav {
+<<<<<<< HEAD
   background: transparent;
+=======
+  background: rgba(0, 0, 0, 0);
+>>>>>>> update all
   box-shadow: none !important;
   padding: 0px 20px;
 }

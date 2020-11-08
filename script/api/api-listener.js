@@ -11,10 +11,27 @@ import {
 //Import
 
 //Config
+<<<<<<< HEAD
 const base_url = "https://api.football-data.org/";
 const api_token = "d327b3f79ad54560ac84595be3610b21";
 //Config
 
+=======
+const base_url = "https://api.football-data.org";
+const api_token = "d327b3f79ad54560ac84595be3610b21";
+//Config
+
+// Fetch API
+const fetchApi = (url) => {
+  return fetch(url, {
+    headers: {
+      "X-Auth-Token": api_token,
+    },
+  });
+};
+// Fetch API
+
+>>>>>>> update all
 //Get Standings Data
 let getStandings = () => {
   apiHandler("select#klasemen", "change", (event) => {
@@ -35,11 +52,15 @@ let getStandings = () => {
           }
         });
     }
+<<<<<<< HEAD
     fetch(`${base_url}v2/competitions/${competitionId}/standings`, {
       headers: {
         "X-Auth-Token": api_token,
       },
     })
+=======
+    fetchApi(`${base_url}/v2/competitions/${competitionId}/standings`)
+>>>>>>> update all
       .then(status)
       .then(json)
       .then((result) => {
@@ -75,11 +96,15 @@ let getTeams = () => {
           }
         });
     }
+<<<<<<< HEAD
     fetch(`${base_url}v2/competitions/${teamId}/teams`, {
       headers: {
         "X-Auth-Token": api_token,
       },
     })
+=======
+    fetchApi(`${base_url}/v2/competitions/${teamId}/teams`)
+>>>>>>> update all
       .then(status)
       .then(json)
       .then((result) => {
@@ -115,7 +140,11 @@ let getSavedDetailTeam = () => {
 //Get Detail Team Data
 let getDetailTeam = () => {
   let urlParams = new URLSearchParams(window.location.search);
+<<<<<<< HEAD
   let idParam = urlParams.get("id");
+=======
+  let idParam = Number(urlParams.get("id"));
+>>>>>>> update all
   let loader = document.getElementById("loader");
   loader.innerHTML = loaderAnimation;
 
@@ -131,11 +160,15 @@ let getDetailTeam = () => {
       }
     });
   }
+<<<<<<< HEAD
   fetch(`${base_url}/v2/teams/${idParam}`, {
     headers: {
       "X-Auth-Token": api_token,
     },
   })
+=======
+  fetchApi(`${base_url}/v2/teams/${idParam}`)
+>>>>>>> update all
     .then(status)
     .then(json)
     .then((result) => {

@@ -14,7 +14,11 @@ const apiHandler = (selector, event, handler) => {
 
 //Status Response
 let status = (res) => {
+<<<<<<< HEAD
   if (res.status != 200) {
+=======
+  if (res.status !== 200) {
+>>>>>>> update all
     console.log(`Error : ${res.status}`);
     return Promise.reject(new Error(res.statusText()));
   } else {
