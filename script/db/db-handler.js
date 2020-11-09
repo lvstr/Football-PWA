@@ -18,10 +18,13 @@ const getTeamList = () => {
     `;
 
     result.forEach((team) => {
+      let crestUrl = team.crestUrl.replace(/^http:\/\//i, "https://");
+
       teamsHTML += `
         <div class="col s12 m6 team-card"> 
         <div class="card">
         <div class="card-image team-img">
+        <img src="${crestUrl}" class="responsive-img" width="30" alt="team-logo"/>
           <div class="divider"></div>
           <a id="del-favorite-${team.id}" class="btn-floating halfway-fab waves-effect waves-light red"
             ><i class="material-icons">cancel</i></a
