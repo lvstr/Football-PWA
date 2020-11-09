@@ -33,7 +33,7 @@ let getStandings = () => {
     let competitionId = event.target.value;
     if ("caches" in window) {
       caches
-        .match(`${base_url}/v2/competitions/${competitionId}/standings`)
+        .match(`${base_url}v2/competitions/${competitionId}/standings`)
         .then((res) => {
           if (res) {
             res
@@ -45,7 +45,7 @@ let getStandings = () => {
           }
         });
     }
-    fetchApi(`${base_url}/v2/competitions/${competitionId}/standings`)
+    fetchApi(`${base_url}v2/competitions/${competitionId}/standings`)
       .then(status)
       .then(json)
       .then((result) => {
@@ -69,20 +69,18 @@ let getTeams = () => {
     loader.innerHTML = loaderAnimation;
     let teamId = event.target.value;
     if ("caches" in window) {
-      caches
-        .match(`${base_url}/v2/competitions/${teamId}/teams`)
-        .then((res) => {
-          if (res) {
-            res
-              .json()
-              .then((result) => {
-                renderTeams(result, loader);
-              })
-              .catch((err) => console.log(err));
-          }
-        });
+      caches.match(`${base_url}v2/competitions/${teamId}/teams`).then((res) => {
+        if (res) {
+          res
+            .json()
+            .then((result) => {
+              renderTeams(result, loader);
+            })
+            .catch((err) => console.log(err));
+        }
+      });
     }
-    fetchApi(`${base_url}/v2/competitions/${teamId}/teams`)
+    fetchApi(`${base_url}v2/competitions/${teamId}/teams`)
       .then(status)
       .then(json)
       .then((result) => {
@@ -123,7 +121,7 @@ let getDetailTeam = () => {
   loader.innerHTML = loaderAnimation;
 
   if ("caches" in window) {
-    caches.match(`${base_url}/v2/teams/${idParam}`).then((res) => {
+    caches.match(`${base_url}v2/teams/${idParam}`).then((res) => {
       if (res) {
         res
           .json()
@@ -134,7 +132,7 @@ let getDetailTeam = () => {
       }
     });
   }
-  fetchApi(`${base_url}/v2/teams/${idParam}`)
+  fetchApi(`${base_url}v2/teams/${idParam}`)
     .then(status)
     .then(json)
     .then((result) => {
