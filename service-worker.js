@@ -33,31 +33,91 @@ workbox.precaching.precacheAndRoute(
     { url: "/script/api/api-listener.js", revision: "1" },
     { url: "/script/api/api-handler.js", revision: "1" },
     { url: "/script/api/api-render.js", revision: "1" },
+    { url: "https://unpkg.com/aos@2.3.1/dist/aos.css", revision: "1" },
+    {
+      url:
+        "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css",
+      revision: "1",
+    },
+    {
+      url:
+        "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css",
+      revision: "1",
+    },
+    {
+      url: "https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js",
+      revision: "1",
+    },
+    {
+      url:
+        "https://cdnjs.cloudflare.com/ajax/libs/parallax/3.1.0/parallax.min.js",
+      revision: "1",
+    },
+    {
+      url: "https://unpkg.com/aos@2.3.1/dist/aos.js",
+      revision: "1",
+    },
   ],
   {
     ignoreUrlParametersMatching: [/.*/],
   }
 );
 
+// Fonts Cache
 workbox.routing.registerRoute(
-  new RegExp("https://api.football-data.org/v2"),
+  /^https:\/\/fonts\.googleapis\.com/,
+  workbox.strategies.staleWhileRevalidate({
+    cacheName: "google-fonts-stylesheets",
+  })
+);
+
+workbox.routing.registerRoute(
+  /^https:\/\/fonts\.gstatic\.com/,
+  workbox.strategies.cacheFirst({
+    cacheName: "google-fonts-webfonts",
+    plugins: [
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200],
+      }),
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+        maxEntries: 30,
+      }),
+    ],
+  })
+);
+// Fonts Cache
+
+// Team-Icona Cache
+workbox.routing.registerRoute(
+  new RegExp("https://crests\\.football-data\\.org.*\\.svg"),
+  workbox.strategies.cacheFirst({
+    cacheName: "team-icon",
+    plugins: [
+      new workbox.cacheableResponse.Plugin({
+        statuses: [0, 200],
+      }),
+      new workbox.expiration.Plugin({
+        maxAgeSeconds: 60 * 60 * 24 * 365,
+        maxEntries: 30,
+      }),
+    ],
+  })
+);
+// Team-Icona Cache
+
+// API Cache
+workbox.routing.registerRoute(
+  new RegExp("https://api.football-data.org/"),
   workbox.strategies.staleWhileRevalidate({
     cacheName: "cache-api",
-    cacheExpiration: {
-      maxAgeSeconds: 60 * 30,
-    },
   })
 );
+// API Cache
 
+// Images Cache
 workbox.routing.registerRoute(
-  new RegExp("/pages/"),
-  workbox.strategies.staleWhileRevalidate({
-    cacheName: "cache-pages",
-  })
-);
-
-workbox.routing.registerRoute(
-  new RegExp(".(png|svg|jpg|jpeg)$"),
+  /.*.(?:png|jpg|jpeg|svg|gif|crests.football-data.org)/,
   workbox.strategies.cacheFirst({
     cacheName: "cache-image",
     plugins: [
@@ -69,6 +129,7 @@ workbox.routing.registerRoute(
     ],
   })
 );
+// Images Cache
 
 //Response to Push Notification
 self.addEventListener("push", (event) => {
@@ -91,3 +152,4 @@ self.addEventListener("push", (event) => {
     self.registration.showNotification("Push Notification", options)
   );
 });
+
